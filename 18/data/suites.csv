@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","0","test_address","tests","Wed Mar 05 14:27:21 GMT 2025","passed","Wed Mar 05 14:27:21 GMT 2025","","test_personal_details","",""
-"","0","test_subtarct_function","tests","Wed Mar 05 14:27:21 GMT 2025","passed","Wed Mar 05 14:27:21 GMT 2025","","test_main","",""
-"","0","test_add_function","tests","Wed Mar 05 14:27:21 GMT 2025","passed","Wed Mar 05 14:27:21 GMT 2025","","test_main","",""
