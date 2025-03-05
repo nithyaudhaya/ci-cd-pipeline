@@ -44,8 +44,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         #pip install flake8 pytest
-        ls -lrt
-        pwd
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Lint with flake8
@@ -84,5 +82,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: allure-history
-        destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
-        target_url: nithyaudhaya.github.io/github-allure-history/${{ github.run_number }}
+        destination_dir: nithyaudhaya.github.io/github-allure-history/${{ github.run_number }}
