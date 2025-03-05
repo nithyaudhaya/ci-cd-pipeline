@@ -43,6 +43,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         #pip install flake8 pytest
+        ls -lrt
+        pwd
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Lint with flake8
@@ -62,15 +64,16 @@ jobs:
       continue-on-error: true
       with:
         ref: gh-pages
-        path: gh-pages
+        path: gh-pages-dir
 
     - name: Generate Allure test report
-      uses: simple-elf/allure-report-action@master
+      uses: andgineer/allure-report@v3.5
       id: allure-report
       if: always()
       with:
         allure-results: allure-results
-        allure_history: allure-history
+        website: gh-pages-dir
+        reports-site-path: builds/tests
 
     - name: Publish Allure test report
       uses: peaceiris/actions-gh-pages@v3
@@ -78,4 +81,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        PUBLISH_DIR: allure-history
+        publish_dir: ${{ steps.allure-report.outputs.reports-site }}
+        destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
