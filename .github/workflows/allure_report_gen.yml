@@ -73,8 +73,8 @@ jobs:
       if: always()
       with:
         allure-results: allure-results
-        # website: gh-pages-dir
-        # reports-site-path: builds/tests
+        website: gh-pages-dir
+        reports-site-path: builds/tests
         allure_history: allure-history
         keep_reports: 20
 
@@ -83,5 +83,6 @@ jobs:
       if: ${{ always() && (steps.allure-report.outcome == 'success') }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: allure-history
+        publish_branch: gh-pages
+        publish_dir: ${{ steps.allure-report.outputs.reports-site }}
+        destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
