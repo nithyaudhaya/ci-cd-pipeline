@@ -1,11 +1,11 @@
-from src.main import add, subtract
+from src.main import Maths
 
 def test_add_function():
-    assert add(2, 3) == 5
-    assert add(0, 0) == 0
-    assert add(5, 5) == 10
+    assert Maths.add(2, 3) == 5
+    assert Maths.add(0, 0) == 0
+    assert Maths.add(5, 5) == 10
 
 def test_subtarct_function():
-    assert subtract(5, 3) == 2
-    assert subtract(0, 0) == 0
-    assert subtract(10, 5) == 5
+    assert Maths.subtract(5, 3) == 2
+    assert Maths.subtract(0, 0) == 0
+    assert Maths.subtract(10, 5) == 5

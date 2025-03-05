@@ -1,8 +1,7 @@
-def add(a, b):
-    return a+b
+class Maths:
 
-def subtract(a, b):
-    return a-b
+    def add(a, b):
+        return a+b
 
-def address(addr):
-    return addr
+    def subtract(a, b):
+        return a-b
