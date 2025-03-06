@@ -84,8 +84,9 @@ jobs:
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
 
     - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@master
+      uses: EnricoMi/publish-unit-test-result-action@master
       if: always() # always run even if the previous step fails
       with:
         check_name: "Test Results"
-        files:  "*.xml"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        files:  "**/test-results.xml"
