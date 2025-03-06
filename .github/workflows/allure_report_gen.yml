@@ -2,14 +2,14 @@
 # Generate Allure Report
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Dev Build
+name: Dev Build-Allure Report & Test Results
 
 env:
   PRIMARY_PYTHON_VERSION: '3.10'
   PRIMARY_PLATFORM: 'ubuntu-latest'
   PYTEST_CMD: >-
     python -m pytest tests/
-    --junitxml=pytest.xml
+    --junitxml=test-results.xml
     --alluredir=./allure-results
 
 on:
@@ -84,7 +84,7 @@ jobs:
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
 
     - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      uses: dorny/test-reporter@v1
       if: always() # always run even if the previous step fails
       with:
         check_name: "Test Results"
