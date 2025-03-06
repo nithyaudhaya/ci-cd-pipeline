@@ -32,10 +32,10 @@ jobs:
       cancel-in-progress: false
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Python ${{env.PRIMARY_PYTHON_VERSION}}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: ${{env.PRIMARY_PYTHON_VERSION}}
 
@@ -86,8 +86,7 @@ jobs:
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
 
     - name: Publish Test Results
-      uses: github-actions-ecosystem/action-junit-report@v2
-    #   uses: EnricoMi/publish-unit-test-result-action/composite@v1
+      uses: EnricoMi/publish-unit-test-result-action/composite@v1
       if: always() # always run even if the previous step fails
       with:
         check_name: "Test Results"
