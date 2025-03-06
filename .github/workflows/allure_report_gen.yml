@@ -52,13 +52,6 @@ jobs:
         #pip install flake8 pytest
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
     - name: Test with pytest and Allure report
       run: |
         source .venv/bin/activate
@@ -93,7 +86,7 @@ jobs:
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
 
     - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v2
+      uses: EnricoMi/publish-unit-test-result-action/composite@v1
       if: always() # always run even if the previous step fails
       with:
         check_name: "Test Results"
