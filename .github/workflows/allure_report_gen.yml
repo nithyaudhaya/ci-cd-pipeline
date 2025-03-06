@@ -72,6 +72,7 @@ jobs:
       id: allure-report
       if: always() # always run even if the previous step fails
       with:
+        check_name: "Allure Report"
         allure-results: allure-results
         website: gh-pages-dir
         reports-site-path: builds/tests
