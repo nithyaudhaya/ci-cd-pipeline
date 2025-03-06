@@ -5,7 +5,7 @@
 name: Dev Build-Allure Report & Test Results
 
 env:
-  PRIMARY_PYTHON_VERSION: '3.10'
+  PRIMARY_PYTHON_VERSION: '3.8'
   PRIMARY_PLATFORM: 'ubuntu-latest'
   PYTEST_CMD: >-
     python -m pytest tests/
