@@ -84,7 +84,7 @@ jobs:
         destination_dir: ${{ steps.allure-report.outputs.reports-site-path }}
 
     - name: Publish Test Results
-      uses: dorny/test-reporter@v1
+      uses: EnricoMi/publish-unit-test-result-action/composite@master
       if: always() # always run even if the previous step fails
       with:
         check_name: "Test Results"
