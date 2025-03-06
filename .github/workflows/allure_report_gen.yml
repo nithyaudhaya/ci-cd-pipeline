@@ -32,17 +32,22 @@ jobs:
       cancel-in-progress: false
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
     - name: Set up Python ${{env.PRIMARY_PYTHON_VERSION}}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{env.PRIMARY_PYTHON_VERSION}}
 
     - name: Install dependencies
       run: |
+        python3 -m venv .venv
+        python3 -m pip install --upgrade pip
+        source .venv/bin/activate
+
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
         #pip install flake8 pytest
         #if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
@@ -55,6 +60,10 @@ jobs:
 
     - name: Test with pytest and Allure report
       run: |
+        source .venv/bin/activate
+        echo "Test Execution"
+        pwd
+        source .venv/bin/activate
         ${{env.PYTEST_CMD}}
 
     - name: Load Allure test report history
